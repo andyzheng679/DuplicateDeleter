@@ -11,11 +11,69 @@ public final class StringDuplicateDeleter extends DuplicateDeleter<String> {
 
     @Override
     public String[] removeDuplicates(int maxNumberOfDuplications) {
-        return new String[0];
+
+        int newArraySizeCounter = 0;
+        for(int i = 0; i < array.length; i++){
+            int dupCounter = 0;
+            for(int j = 0; j < array.length; j++){
+                if(array[j].equals(array[i])){
+                    dupCounter++;
+                }
+            }if(dupCounter >= maxNumberOfDuplications){
+                newArraySizeCounter++;
+            }
+        }
+
+        String[] newArray = new String[array.length - newArraySizeCounter];
+        int index = 0;
+
+        for(int i = 0; i < array.length; i++){
+            int dupCounter = 0;
+            for(int j = 0; j < array.length; j++){
+                if(array[j].equals(array[i])){
+                    dupCounter++;
+                }
+            }if(dupCounter < maxNumberOfDuplications){
+                newArray[index] = array[i];
+                index++;
+            }
+        }
+
+
+        return newArray;
     }
 
     @Override
     public String[] removeDuplicatesExactly(int exactNumberOfDuplications) {
-        return new String[0];
+
+        int newArraySizeCounter = 0;
+        for(int i = 0; i < array.length; i++){
+            int dupCounter = 0;
+            for(int j = 0; j < array.length; j++){
+                if(array[j].equals(array[i])){
+                    dupCounter++;
+                }
+            }if(dupCounter == exactNumberOfDuplications){
+                newArraySizeCounter++;
+            }
+        }
+
+        String[] newArray = new String[array.length - newArraySizeCounter];
+        int index = 0;
+
+        for(int i = 0; i < array.length; i++){
+            int dupCounter = 0;
+            for(int j = 0; j < array.length; j++){
+                if(array[j].equals(array[i])){
+                    dupCounter++;
+                }
+            }if(dupCounter != exactNumberOfDuplications){
+                newArray[index] = array[i];
+                index++;
+            }
+        }
+
+
+        return newArray;
     }
 }
